@@ -1,1 +1,41 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Instagram Caption Generator</title>
+</head>
+
+<body>
+
+<h1>AI Instagram Caption Generator</h1>
+
+<textarea id="topic" placeholder="Enter topic (travel, motivation, food)"></textarea>
+
+<br><br>
+
+<button onclick="generateCaption()">Generate Caption</button>
+
+<p id="result"></p>
+
+<script>
+function generateCaption(){
+
+let topic = document.getElementById("topic").value;
+
+let captions = [
+"Chasing dreams and loving every moment 🌟",
+"Living my best life with " + topic,
+"Every day is a new adventure 🚀",
+"Small moments, big memories",
+"Stay positive and keep moving forward"
+];
+
+let random = captions[Math.floor(Math.random()*captions.length)];
+
+document.getElementById("result").innerText = random;
+
+}
+</script>
+
+</body>
+</html>
