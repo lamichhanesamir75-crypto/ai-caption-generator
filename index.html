@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Content Generator</title>
+<title>Free AI Content Generator</title>
+
+<meta name="description" content="Free AI tool to generate Instagram captions, YouTube SEO titles, bios and content ideas instantly.">
 
 <style>
+
 body{
-font-family: Arial;
-background: linear-gradient(135deg,#4facfe,#00f2fe);
+font-family:Arial;
 margin:0;
-padding:0;
-text-align:center;
+background:#f5f7fb;
+}
+
+nav{
+background:#1f2937;
 color:white;
+padding:15px;
+font-size:18px;
+}
+
+nav span{
+margin-right:20px;
+cursor:pointer;
 }
 
 .container{
+max-width:700px;
+margin:60px auto;
 background:white;
-color:black;
-width:90%;
-max-width:600px;
-margin:80px auto;
 padding:30px;
 border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+text-align:center;
 }
 
 h1{
@@ -33,52 +44,86 @@ width:100%;
 padding:12px;
 margin-top:10px;
 border-radius:6px;
-border:1px solid #ccc;
+border:1px solid #ddd;
 font-size:16px;
 }
 
 button{
-background:#4facfe;
+background:#2563eb;
 color:white;
 border:none;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
 }
 
 button:hover{
-background:#2a8df0;
+background:#1e40af;
 }
 
 .result{
 margin-top:20px;
-font-size:18px;
-background:#f3f3f3;
 padding:15px;
+background:#f3f4f6;
 border-radius:6px;
+font-size:18px;
 }
+
+.copybtn{
+margin-top:10px;
+background:#10b981;
+}
+
+footer{
+margin-top:60px;
+text-align:center;
+padding:30px;
+color:#666;
+font-size:14px;
+}
+
 </style>
 </head>
 
 <body>
 
+<nav>
+<span>Home</span>
+<span>AI Tools</span>
+<span>Blog</span>
+<span>About</span>
+</nav>
+
 <div class="container">
 
-<h1>AI Content Generator</h1>
+<h1>Free AI Content Generator</h1>
 
 <select id="tool">
 <option value="caption">Instagram Caption</option>
 <option value="title">YouTube SEO Title</option>
 <option value="bio">Instagram Bio</option>
 <option value="idea">Content Idea</option>
+<option value="hashtag">Hashtag Generator</option>
 </select>
 
-<textarea id="topic" placeholder="Enter topic (travel, motivation, business)"></textarea>
+<textarea id="topic" placeholder="Enter topic (travel, fitness, business)"></textarea>
 
 <button onclick="generate()">Generate</button>
 
 <div class="result" id="output"></div>
 
+<button class="copybtn" onclick="copyText()">Copy Result</button>
+
 </div>
+
+<footer>
+
+<h3>Best Free AI Caption Generator</h3>
+
+<p>
+Generate Instagram captions, YouTube SEO titles, hashtags and social media ideas instantly using this free AI tool.
+</p>
+
+</footer>
 
 <script>
 
@@ -89,55 +134,63 @@ let tool=document.getElementById("tool").value;
 
 let captions=[
 "Living my best life with "+topic+" ✨",
-"Chasing dreams and loving "+topic+" 🚀",
-"Every moment matters with "+topic,
-"Small steps big dreams #"+topic,
-"Good vibes and "+topic+" only 🌟"
+"Dream big and keep chasing "+topic,
+"Every day is about "+topic+" and growth",
+topic+" vibes only 🚀",
+"Creating memories with "+topic
 ];
 
 let titles=[
-topic+" Secrets Nobody Tells You",
 "Top 10 "+topic+" Tips For Beginners",
 "How To Master "+topic+" In 2026",
-topic+" Strategy That Actually Works",
-"The Ultimate "+topic+" Guide"
+topic+" Secrets Nobody Tells You",
+"The Ultimate "+topic+" Guide",
+"Beginner Mistakes In "+topic
 ];
 
 let bios=[
-"Passionate about "+topic+" | Dream big",
-topic+" lover | Creating my journey",
-"Exploring life through "+topic,
+topic+" lover | Dream big",
+"Sharing my "+topic+" journey",
 topic+" | Growth | Hustle",
-"Sharing my "+topic+" journey"
+"Life is about "+topic,
+topic+" enthusiast"
 ];
 
 let ideas=[
 "10 things people don't know about "+topic,
-"Beginner mistakes in "+topic,
 "Daily routine for "+topic+" success",
+"Beginner mistakes in "+topic,
 "How I started "+topic,
 topic+" tips that changed my life"
 ];
 
+let hashtags=[
+"#"+topic+" #motivation #success",
+"#"+topic+"life #dailyinspiration",
+"#"+topic+"tips #growthmindset",
+"#"+topic+"journey #selfimprovement",
+"#"+topic+"content #creatorlife"
+];
+
 let result="";
 
-if(tool=="caption"){
-result=captions[Math.floor(Math.random()*captions.length)];
-}
-
-if(tool=="title"){
-result=titles[Math.floor(Math.random()*titles.length)];
-}
-
-if(tool=="bio"){
-result=bios[Math.floor(Math.random()*bios.length)];
-}
-
-if(tool=="idea"){
-result=ideas[Math.floor(Math.random()*ideas.length)];
-}
+if(tool=="caption"){result=captions[Math.floor(Math.random()*captions.length)];}
+if(tool=="title"){result=titles[Math.floor(Math.random()*titles.length)];}
+if(tool=="bio"){result=bios[Math.floor(Math.random()*bios.length)];}
+if(tool=="idea"){result=ideas[Math.floor(Math.random()*ideas.length)];}
+if(tool=="hashtag"){result=hashtags[Math.floor(Math.random()*hashtags.length)];}
 
 document.getElementById("output").innerText=result;
+
+}
+
+function copyText(){
+
+let text=document.getElementById("output").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Copied!");
 
 }
 
