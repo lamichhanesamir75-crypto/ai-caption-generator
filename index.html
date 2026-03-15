@@ -1,39 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Instagram Caption Generator</title>
+<title>AI Content Generator</title>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#4facfe,#00f2fe);
+margin:0;
+padding:0;
+text-align:center;
+color:white;
+}
+
+.container{
+background:white;
+color:black;
+width:90%;
+max-width:600px;
+margin:80px auto;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+margin-bottom:20px;
+}
+
+select,textarea,button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+button{
+background:#4facfe;
+color:white;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#2a8df0;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+background:#f3f3f3;
+padding:15px;
+border-radius:6px;
+}
+</style>
 </head>
 
 <body>
 
-<h1>AI Instagram Caption Generator</h1>
+<div class="container">
 
-<textarea id="topic" placeholder="Enter topic (travel, motivation, food)"></textarea>
+<h1>AI Content Generator</h1>
 
-<br><br>
+<select id="tool">
+<option value="caption">Instagram Caption</option>
+<option value="title">YouTube SEO Title</option>
+<option value="bio">Instagram Bio</option>
+<option value="idea">Content Idea</option>
+</select>
 
-<button onclick="generateCaption()">Generate Caption</button>
+<textarea id="topic" placeholder="Enter topic (travel, motivation, business)"></textarea>
 
-<p id="result"></p>
+<button onclick="generate()">Generate</button>
+
+<div class="result" id="output"></div>
+
+</div>
 
 <script>
-function generateCaption(){
 
-let topic = document.getElementById("topic").value;
+function generate(){
 
-let captions = [
-"Chasing dreams and loving every moment 🌟",
-"Living my best life with " + topic,
-"Every day is a new adventure 🚀",
-"Small moments, big memories",
-"Stay positive and keep moving forward"
+let topic=document.getElementById("topic").value;
+let tool=document.getElementById("tool").value;
+
+let captions=[
+"Living my best life with "+topic+" ✨",
+"Chasing dreams and loving "+topic+" 🚀",
+"Every moment matters with "+topic,
+"Small steps big dreams #"+topic,
+"Good vibes and "+topic+" only 🌟"
 ];
 
-let random = captions[Math.floor(Math.random()*captions.length)];
+let titles=[
+topic+" Secrets Nobody Tells You",
+"Top 10 "+topic+" Tips For Beginners",
+"How To Master "+topic+" In 2026",
+topic+" Strategy That Actually Works",
+"The Ultimate "+topic+" Guide"
+];
 
-document.getElementById("result").innerText = random;
+let bios=[
+"Passionate about "+topic+" | Dream big",
+topic+" lover | Creating my journey",
+"Exploring life through "+topic,
+topic+" | Growth | Hustle",
+"Sharing my "+topic+" journey"
+];
+
+let ideas=[
+"10 things people don't know about "+topic,
+"Beginner mistakes in "+topic,
+"Daily routine for "+topic+" success",
+"How I started "+topic,
+topic+" tips that changed my life"
+];
+
+let result="";
+
+if(tool=="caption"){
+result=captions[Math.floor(Math.random()*captions.length)];
+}
+
+if(tool=="title"){
+result=titles[Math.floor(Math.random()*titles.length)];
+}
+
+if(tool=="bio"){
+result=bios[Math.floor(Math.random()*bios.length)];
+}
+
+if(tool=="idea"){
+result=ideas[Math.floor(Math.random()*ideas.length)];
+}
+
+document.getElementById("output").innerText=result;
 
 }
+
 </script>
 
 </body>
