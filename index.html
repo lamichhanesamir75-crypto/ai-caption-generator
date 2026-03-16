@@ -3,146 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Creator Toolkit Pro | By Samir LC</title>
+    <title>Samir AI Toolkit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #00d2ff;
-            --secondary: #3a7bd5;
-            --bg-dark: #0f0c29;
-            --card-dark: rgba(255, 255, 255, 0.08);
-            --text-dark: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-        body {
-            background: var(--bg-dark);
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            color: var(--text-dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .glass-card {
-            background: var(--card-dark);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            width: 100%;
-            max-width: 600px;
-            margin-top: 50px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        h1 { font-size: 24px; margin-bottom: 20px; color: var(--primary); }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            color: white;
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-
-        .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover { transform: scale(1.05); }
-
-        #loader { display: none; margin: 20px 0; color: var(--primary); font-weight: bold; }
-
-        #result-box {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-            display: none;
-            text-align: left;
-            border-left: 4px solid var(--primary);
-        }
+        :root { --primary: #00d2ff; --secondary: #3a7bd5; --bg: #0f0c29; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        input { width: 100%; padding: 12px; margin: 20px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; outline: none; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 10px 20px; border: none; border-radius: 30px; background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; cursor: pointer; font-weight: bold; }
+        #result-box { margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; display: none; text-align: left; line-height: 1.6; }
+        #loader { display: none; margin-top: 15px; color: var(--primary); }
     </style>
 </head>
 <body>
-
-    <div class="glass-card">
-        <h1>Samir's AI Creator Tool</h1>
-        <p style="margin-bottom: 20px; opacity: 0.8;">Enter a topic and let AI generate content for you.</p>
-        
-        <input type="text" id="topic" placeholder="e.g. Stock Market Tips, Cooking, Study Tips...">
-        
+    <div class="card">
+        <h2 style="color: var(--primary)">Samir's AI Toolkit</h2>
+        <input type="text" id="topic" placeholder="Topic lekhnuhos (e.g. Stock Market)...">
         <div class="btn-group">
-            <button class="btn" onclick="runAI('YouTube Titles')">Titles</button>
-            <button class="btn" onclick="runAI('Instagram Captions')">Captions</button>
-            <button class="btn" onclick="runAI('Viral Hashtags')">Hashtags</button>
+            <button class="btn" onclick="askAI('YouTube Titles')">Titles</button>
+            <button class="btn" onclick="askAI('Instagram Captions')">Captions</button>
+            <button class="btn" onclick="askAI('Viral Tags')">Hashtags</button>
         </div>
-
         <div id="loader"><i class="fas fa-spinner fa-spin"></i> AI is thinking...</div>
-
-        <div id="result-box">
-            <div id="result-text"></div>
-        </div>
+        <div id="result-box"></div>
     </div>
 
     <script>
-        async function runAI(type) {
+        async function askAI(type) {
             const topic = document.getElementById('topic').value;
-            const apiKey = "AIzaSyAXZ_NnlPED2yYredhcSfbvCB6ANHPYP0M";
-            
-            if (!topic) {
-                alert("Please enter a topic first!");
-                return;
-            }
+            // Timro naya API Key
+            const apiKey = "AIzaSyAXZ_NnlPED2yYredhcSfbvCB6ANHPYP0M"; 
+
+            if(!topic) { alert("Topic ta lekhnus!"); return; }
 
             const loader = document.getElementById('loader');
             const resultBox = document.getElementById('result-box');
-            const resultText = document.getElementById('result-text');
-
+            
             loader.style.display = "block";
             resultBox.style.display = "none";
-
-            const prompt = `Generate 5 creative ${type} for the topic: ${topic}. Make them catchy for social media.`;
 
             try {
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: prompt }] }]
+                        contents: [{ parts: [{ text: `Generate 5 viral ${type} for: ${topic}` }] }]
                     })
                 });
 
                 const data = await response.json();
-                
-                if (data.candidates && data.candidates[0].content) {
-                    const output = data.candidates[0].content.parts[0].text;
-                    resultText.innerHTML = output.replace(/\n/g, "<br>");
-                    resultBox.style.display = "block";
-                } else {
-                    resultText.innerHTML = "Error: AI could not generate response. Check your API key.";
-                    resultBox.style.display = "block";
-                }
-            } catch (error) {
-                resultText.innerHTML = "Connection error. Please try again.";
+                const aiResponse = data.candidates[0].content.parts[0].text;
+                resultBox.innerHTML = aiResponse.replace(/\n/g, "<br>");
+                resultBox.style.display = "block";
+            } catch (err) {
+                resultBox.innerHTML = "Error: Key expire bhayo ki check garnus.";
                 resultBox.style.display = "block";
             } finally {
                 loader.style.display = "none";
