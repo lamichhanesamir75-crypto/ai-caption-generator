@@ -1,99 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Creator Tools</title>
+<title>AI Creator Toolkit</title>
 
 <style>
 
-body{
-font-family: Arial;
-background:#f2f4f8;
+*{
 margin:0;
-text-align:center;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-header{
-background:#111;
+body{
+background:url("https://images.unsplash.com/photo-1677442136019-21780ecad995") no-repeat center center/cover;
 color:white;
-padding:20px;
-font-size:24px;
+min-height:100vh;
 }
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:rgba(0,0,0,0.8);
+}
+
+nav h2{
+color:#00c3ff;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+opacity:0.9;
+}
+
+/* TOOL BOX */
 
 .container{
 max-width:600px;
 margin:auto;
-background:white;
+background:rgba(0,0,0,0.75);
 padding:30px;
-margin-top:30px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin-top:30px;
+text-align:center;
 }
 
 input{
-width:80%;
+width:90%;
 padding:12px;
-margin:10px;
-border:1px solid #ddd;
+margin:10px 0;
+border:none;
 border-radius:5px;
 }
 
 button{
-padding:12px 25px;
-border:none;
-background:#007BFF;
-color:white;
-border-radius:5px;
-cursor:pointer;
+padding:12px 20px;
 margin:5px;
+border:none;
+border-radius:5px;
+background:#00c3ff;
+color:black;
+font-weight:bold;
+cursor:pointer;
 }
 
 button:hover{
-background:#0056b3;
+background:#00a2d4;
 }
 
 #result{
 margin-top:20px;
 white-space:pre-line;
-font-size:16px;
 }
 
-.tools{
-margin-top:20px;
+/* ABOUT */
+
+.about{
+padding:60px 20px;
+text-align:center;
+background:rgba(0,0,0,0.8);
+margin-top:50px;
+}
+
+.about h2{
+margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:black;
+}
+
+.social a{
+margin:10px;
+color:#00c3ff;
+font-size:20px;
+text-decoration:none;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
-AI Creator Tools
-</header>
+<!-- NAVBAR -->
 
-<div class="container">
+<nav>
 
-<h3>Enter Your Topic</h3>
+<h2>AI Creator Toolkit</h2>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<h1>Free AI Tools for Creators</h1>
+
+<p>Generate YouTube titles, Instagram captions and hashtags instantly.</p>
+
+</section>
+
+<!-- TOOLS -->
+
+<div class="container" id="tools">
+
+<h2>Enter Your Topic</h2>
 
 <input id="topic" placeholder="Example: Motivation for students">
 
-<div class="tools">
+<br>
 
 <button onclick="youtube()">YouTube Titles</button>
 <button onclick="caption()">Instagram Caption</button>
 <button onclick="hashtags()">Hashtags</button>
 
-</div>
+<br><br>
+
+<button onclick="copyText()">Copy Result</button>
 
 <div id="result"></div>
 
 </div>
 
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2>About This Website</h2>
+
+<p>
+
+AI Creator Toolkit is a free tool platform designed for creators.
+Generate YouTube titles, Instagram captions, and social media hashtags instantly.
+This tool helps content creators grow faster on social media platforms.
+
+</p>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="about" id="contact">
+
+<h2>Contact</h2>
+
+<p>Connect with us on social media</p>
+
+<div class="social">
+
+<a href="https://facebook.com" target="_blank">Facebook</a>
+
+<a href="https://wa.me/821059065013" target="_blank">WhatsApp</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>© 2026 AI Creator Toolkit</p>
+
+</footer>
+
 <script>
+
+/* YOUTUBE TITLES */
 
 function youtube(){
 
@@ -111,6 +250,8 @@ document.getElementById("result").innerText=titles.join("\n");
 
 }
 
+/* CAPTION */
+
 function caption(){
 
 let topic=document.getElementById("topic").value;
@@ -126,21 +267,38 @@ document.getElementById("result").innerText=captions.join("\n");
 
 }
 
+/* HASHTAGS */
+
 function hashtags(){
 
 let topic=document.getElementById("topic").value;
 
+let cleanTopic=topic.replace(/\s+/g,'');
+
 let tags=[
-"#"+topic.replace(" ",""),
+"#"+cleanTopic,
+"#"+cleanTopic+"tips",
+"#"+cleanTopic+"content",
 "#success",
 "#motivation",
 "#viral",
 "#contentcreator",
-"#instagramgrowth",
-"#creatorlife"
+"#instagramgrowth"
 ];
 
 document.getElementById("result").innerText=tags.join(" ");
+
+}
+
+/* COPY */
+
+function copyText(){
+
+let text=document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Copied!");
 
 }
 
