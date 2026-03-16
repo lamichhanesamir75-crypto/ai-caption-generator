@@ -1,208 +1,146 @@
 <!DOCTYPE html>
-<html>
- <head>
-  
-<meta name="google-site-verification" content="jWeGjzzfpuBtXHAp9eZk_oV5PEJzAMhbnZoAaBX6Nbw" />
+<html lang="en">
+<head>
 
- <meta name="description" content="Free AI caption generator to create Instagram captions, YouTube SEO titles, hashtags and social media content ideas instantly.">
-<meta name="keywords" content="AI caption generator, instagram caption generator, youtube title generator, hashtag generator, ai content generator">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free AI Caption Generator | Instagram Caption, YouTube Title, Hashtags</title>
 
-<meta name="description" content="Free AI tool to generate Instagram captions, YouTube SEO titles, bios and content ideas instantly.">
+<title>AI Creator Tools</title>
 
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
+background:#f2f4f8;
 margin:0;
-background:#f5f7fb;
+text-align:center;
 }
 
-nav{
-background:#1f2937;
+header{
+background:#111;
 color:white;
-padding:15px;
-font-size:18px;
-}
-
-nav span{
-margin-right:20px;
-cursor:pointer;
+padding:20px;
+font-size:24px;
 }
 
 .container{
-max-width:700px;
-margin:60px auto;
+max-width:600px;
+margin:auto;
 background:white;
 padding:30px;
+margin-top:30px;
 border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-h1{
-margin-bottom:20px;
-}
-
-select,textarea,button{
-width:100%;
+input{
+width:80%;
 padding:12px;
-margin-top:10px;
-border-radius:6px;
+margin:10px;
 border:1px solid #ddd;
-font-size:16px;
+border-radius:5px;
 }
 
 button{
-background:#2563eb;
-color:white;
+padding:12px 25px;
 border:none;
-font-weight:bold;
+background:#007BFF;
+color:white;
+border-radius:5px;
 cursor:pointer;
+margin:5px;
 }
 
 button:hover{
-background:#1e40af;
+background:#0056b3;
 }
 
-.result{
+#result{
 margin-top:20px;
-padding:15px;
-background:#f3f4f6;
-border-radius:6px;
-font-size:18px;
+white-space:pre-line;
+font-size:16px;
 }
 
-.copybtn{
-margin-top:10px;
-background:#10b981;
-}
-
-footer{
-margin-top:60px;
-text-align:center;
-padding:30px;
-color:#666;
-font-size:14px;
+.tools{
+margin-top:20px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<nav>
-<span>Home</span>
-<span>AI Tools</span>
-<span>Blog</span>
-<span>About</span>
-</nav>
+<header>
+AI Creator Tools
+</header>
 
 <div class="container">
 
-<h2>Free AI Caption Generator</h2>
+<h3>Enter Your Topic</h3>
 
-<p>
-This free AI tool helps creators generate Instagram captions, YouTube SEO titles,
-hashtags and content ideas instantly. It is perfect for influencers,
-bloggers, and social media marketers who want to grow faster online.
-</p>
+<input id="topic" placeholder="Example: Motivation for students">
 
-<select id="tool">
-<option value="caption">Instagram Caption</option>
-<option value="title">YouTube SEO Title</option>
-<option value="bio">Instagram Bio</option>
-<option value="idea">Content Idea</option>
-<option value="hashtag">Hashtag Generator</option>
-</select>
+<div class="tools">
 
-<textarea id="topic" placeholder="Enter topic (travel, fitness, business)"></textarea>
-
-<button onclick="generate()">Generate</button>
-
-<div class="result" id="output"></div>
-
-<button class="copybtn" onclick="copyText()">Copy Result</button>
+<button onclick="youtube()">YouTube Titles</button>
+<button onclick="caption()">Instagram Caption</button>
+<button onclick="hashtags()">Hashtags</button>
 
 </div>
 
-<footer>
+<div id="result"></div>
 
-<h3>Best Free AI Caption Generator</h3>
-
-<p>
-Generate Instagram captions, YouTube SEO titles, hashtags and social media ideas instantly using this free AI tool.
-</p>
-
-</footer>
+</div>
 
 <script>
 
-function generate(){
+function youtube(){
 
 let topic=document.getElementById("topic").value;
-let tool=document.getElementById("tool").value;
-
-let captions=[
-"Living my best life with "+topic+" ✨",
-"Dream big and keep chasing "+topic,
-"Every day is about "+topic+" and growth",
-topic+" vibes only 🚀",
-"Creating memories with "+topic
-];
 
 let titles=[
-"Top 10 "+topic+" Tips For Beginners",
-"How To Master "+topic+" In 2026",
-topic+" Secrets Nobody Tells You",
-"The Ultimate "+topic+" Guide",
-"Beginner Mistakes In "+topic
+"10 Powerful Tips About "+topic,
+"The Truth About "+topic,
+"How To Master "+topic+" Fast",
+"Secrets Nobody Tells About "+topic,
+topic+" Explained in 5 Minutes"
 ];
 
-let bios=[
-topic+" lover | Dream big",
-"Sharing my "+topic+" journey",
-topic+" | Growth | Hustle",
-"Life is about "+topic,
-topic+" enthusiast"
-];
-
-let ideas=[
-"10 things people don't know about "+topic,
-"Daily routine for "+topic+" success",
-"Beginner mistakes in "+topic,
-"How I started "+topic,
-topic+" tips that changed my life"
-];
-
-let hashtags=[
-"#"+topic+" #motivation #success",
-"#"+topic+"life #dailyinspiration",
-"#"+topic+"tips #growthmindset",
-"#"+topic+"journey #selfimprovement",
-"#"+topic+"content #creatorlife"
-];
-
-let result="";
-
-if(tool=="caption"){result=captions[Math.floor(Math.random()*captions.length)];}
-if(tool=="title"){result=titles[Math.floor(Math.random()*titles.length)];}
-if(tool=="bio"){result=bios[Math.floor(Math.random()*bios.length)];}
-if(tool=="idea"){result=ideas[Math.floor(Math.random()*ideas.length)];}
-if(tool=="hashtag"){result=hashtags[Math.floor(Math.random()*hashtags.length)];}
-
-document.getElementById("output").innerText=result;
+document.getElementById("result").innerText=titles.join("\n");
 
 }
 
-function copyText(){
+function caption(){
 
-let text=document.getElementById("output").innerText;
+let topic=document.getElementById("topic").value;
 
-navigator.clipboard.writeText(text);
+let captions=[
+"Living my best life with "+topic+" ✨",
+topic+" vibes only 🔥",
+"Another beautiful moment with "+topic,
+"Can't get enough of "+topic+" ❤️"
+];
 
-alert("Copied!");
+document.getElementById("result").innerText=captions.join("\n");
+
+}
+
+function hashtags(){
+
+let topic=document.getElementById("topic").value;
+
+let tags=[
+"#"+topic.replace(" ",""),
+"#success",
+"#motivation",
+"#viral",
+"#contentcreator",
+"#instagramgrowth",
+"#creatorlife"
+];
+
+document.getElementById("result").innerText=tags.join(" ");
 
 }
 
